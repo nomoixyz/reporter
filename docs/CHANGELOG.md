@@ -1,3 +1,10 @@
+# [1.0.0-beta.2](https://github.com/nomoixyz/reporter/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2022-12-28)
+
+
+### Bug Fixes
+
+* fix likelihood labels ([80ea958](https://github.com/nomoixyz/reporter/commit/80ea95849cbd313fe36790f03d051317088c8b83))
+
 # 1.0.0-beta.1 (2022-12-28)
 
 
