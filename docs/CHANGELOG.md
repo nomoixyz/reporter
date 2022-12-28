@@ -1,3 +1,15 @@
+# [1.0.0-beta.4](https://github.com/nomoixyz/reporter/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2022-12-28)
+
+
+### Bug Fixes
+
+* update commit url and add space to badges ([2789df2](https://github.com/nomoixyz/reporter/commit/2789df2c7faa158a2f7105f993f8bdfe7dd9bae0))
+
+
+### Features
+
+* use html ([b51421a](https://github.com/nomoixyz/reporter/commit/b51421a04e723ab380999dba86cf6df765abd541))
+
 # [1.0.0-beta.3](https://github.com/nomoixyz/reporter/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2022-12-28)
 
 
