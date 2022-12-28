@@ -17,8 +17,10 @@ export class Formatter {
       result.push(`# ${metadata.title}`);
 
       if (metadata.repository) {
+        const repositoryUrl = metadata.repository.url;
+        const commitUrl = `${repositoryUrl}/commit/${metadata.repository.commit}`;
         result.push(
-          `This report was made by reviewing the ${metadata.repository.url} repository on commit #${metadata.repository.commit}.`
+          `This report was made by reviewing the [${repositoryUrl}](${repositoryUrl}) repository on commit #[${commitUrl}](${metadata.repository.commit}).`
         );
       }
       result.push(
