@@ -15,7 +15,7 @@ export class Formatter {
     const result: string[] = [];
 
     if (metadata) {
-      result.push(`# ${metadata.title}`);
+      result.push(`<h1 align="center">${metadata.title}</h1>`);
 
       if (metadata.repository) {
         const repositoryUrl = metadata.repository.url;
@@ -25,7 +25,7 @@ export class Formatter {
         );
       }
       result.push(
-        `The review started at ${new Date(metadata.startDate).toUTCString()}`
+        `The review started at *${new Date(metadata.startDate).toUTCString()}*`
       );
     }
 
@@ -60,7 +60,7 @@ export class Formatter {
       mediumFindings.length > 0 ||
       lowFindings.length > 0
     ) {
-      result.push(`## Findings`);
+      result.push(`<h2 align="center">Findings</h2>`);
     }
 
     if (criticalFindings.length > 0) {
@@ -104,7 +104,7 @@ export class Formatter {
     }
 
     if (enhancements.length > 0) {
-      result.push(`### Code enhancements`);
+      result.push(`<h2 align="center">Code enhancements</h2>`);
     }
 
     for (const issue of enhancements) {
@@ -113,7 +113,7 @@ export class Formatter {
     }
 
     if (optimizations.length > 0) {
-      result.push(`### Gas optimizations`);
+      result.push(`<h2 align="center">Gas optimizations</h2>`);
     }
 
     for (const issue of optimizations) {
