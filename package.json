@@ -21,7 +21,7 @@
     "lint": "eslint --ext .ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nomoi",
   "license": "MIT",
   "dependencies": {
     "commander": "^9.4.1",
