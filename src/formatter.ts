@@ -1,5 +1,6 @@
-import { ParsedIssue, Severity, Type } from "./parser.js";
+import { Impact, Likelihood, ParsedIssue, Severity, Type } from "./parser.js";
 
+type BadgeColor = "red" | "yellow" | "blue";
 export interface Metadata {
   title: string;
   repository?: {
@@ -68,6 +69,7 @@ export class Formatter {
 
     for (const issue of criticalFindings) {
       result.push(`#### ${issue.title}`);
+      result.push(this.issueBadges(issue));
       result.push(issue.body.replace(/\r/gm, ""));
     }
 
@@ -77,6 +79,7 @@ export class Formatter {
 
     for (const issue of highFindings) {
       result.push(`#### ${issue.title}`);
+      result.push(this.issueBadges(issue));
       result.push(issue.body.replace(/\r/gm, ""));
     }
 
@@ -86,6 +89,7 @@ export class Formatter {
 
     for (const issue of mediumFindings) {
       result.push(`#### ${issue.title}`);
+      result.push(this.issueBadges(issue));
       result.push(issue.body.replace(/\r/gm, ""));
     }
 
@@ -95,6 +99,7 @@ export class Formatter {
 
     for (const issue of lowFindings) {
       result.push(`#### ${issue.title}`);
+      result.push(this.issueBadges(issue));
       result.push(issue.body.replace(/\r/gm, ""));
     }
 
@@ -117,5 +122,55 @@ export class Formatter {
     }
 
     return result.join(`\n\n`);
+  }
+
+  private issueBadges(issue: ParsedIssue): string {
+    let impactColor: BadgeColor = "blue";
+    let impactText = Impact[Impact.LOW];
+
+    if (issue.impact === Impact.HIGH) {
+      impactColor = "red";
+      impactText = Impact[Impact.HIGH];
+    }
+
+    if (issue.impact === Impact.MEDIUM) {
+      impactColor = "yellow";
+      impactText = Impact[Impact.MEDIUM];
+    }
+
+    let likelihoodColor: BadgeColor = "blue";
+    let likelihoodText = Likelihood[Likelihood.LOW];
+
+    if (issue.likelihood === Likelihood.HIGH) {
+      likelihoodColor = "red";
+      likelihoodText = Likelihood[Likelihood.HIGH];
+    }
+
+    if (issue.likelihood === Likelihood.MEDIUM) {
+      likelihoodColor = "yellow";
+      likelihoodText = Likelihood[Likelihood.MEDIUM];
+    }
+
+    const impactBadge = this.markdownBadgeGenerator(
+      "IMPACT",
+      impactText,
+      impactColor
+    );
+
+    const likelihoodBadge = this.markdownBadgeGenerator(
+      "LIKELIHOOD",
+      likelihoodText,
+      likelihoodColor
+    );
+
+    return `${impactBadge}${likelihoodBadge}`;
+  }
+
+  private markdownBadgeGenerator(
+    subject: string,
+    status: string,
+    color: BadgeColor
+  ) {
+    return `[![Badge](https://img.shields.io/badge/${subject}-${status}-${color}.svg)](https://shields.io/)`;
   }
 }
