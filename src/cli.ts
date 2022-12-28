@@ -19,7 +19,6 @@ export class CLI {
       )
       .argument("<repository>", "the target repository in the form 'user/repo'")
       .argument("<labels...>", "only parse issues with these labels")
-      .option("-t, --token <token>", "the github access token")
       .option(
         "-m, --metadata <path>",
         "the path to the metadata file",
