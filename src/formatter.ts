@@ -21,7 +21,7 @@ export class Formatter {
         const repositoryUrl = metadata.repository.url;
         const commitUrl = `${repositoryUrl}/commit/${metadata.repository.commit}`;
         result.push(
-          `This report was made by reviewing the [${repositoryUrl}](${repositoryUrl}) repository on commit #[${commitUrl}](${metadata.repository.commit}).`
+          `This report was made by reviewing the [${repositoryUrl}](${repositoryUrl}) repository on commit [${metadata.repository.commit}](${commitUrl}).`
         );
       }
       result.push(
@@ -163,7 +163,7 @@ export class Formatter {
       likelihoodColor
     );
 
-    return `${impactBadge}${likelihoodBadge}`;
+    return `${impactBadge} ${likelihoodBadge}`;
   }
 
   private markdownBadgeGenerator(
