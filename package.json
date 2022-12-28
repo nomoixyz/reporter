@@ -7,7 +7,7 @@
   "main": "dist/index.js",
   "type": "module",
   "bin": {
-    "reporter": "dist/index.js"
+    "reporter": "dist/app.js"
   },
   "files": [
     "dist/*",
