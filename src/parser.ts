@@ -30,8 +30,8 @@ export enum Likelihood {
 }
 
 export const HighLikelihoodLabel = "likelihood:high";
-export const MediumLikelihoodLabel = "medium:high";
-export const LowLikelihoodLabel = "low:high";
+export const MediumLikelihoodLabel = "likelihood:medium";
+export const LowLikelihoodLabel = "likelihood:low";
 
 export type LikelihoodLabel =
   | typeof HighLikelihoodLabel
