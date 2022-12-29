@@ -1,6 +1,7 @@
 import { Impact, Likelihood, ParsedIssue, Severity, Type } from "./parser.js";
 
 type BadgeColor = "red" | "yellow" | "blue";
+
 export interface Metadata {
   title: string;
   repository?: {
@@ -27,6 +28,12 @@ export class Formatter {
       result.push(
         `The review started at *${new Date(metadata.startDate).toUTCString()}*`
       );
+    }
+
+    const introduction = issues.find(i => i.type === Type.INTRODUCTION);
+
+    if (introduction) {
+      result.push(introduction.body);
     }
 
     const criticalFindings: ParsedIssue[] = [];
@@ -121,6 +128,12 @@ export class Formatter {
       result.push(issue.body.replace(/\r/gm, ""));
     }
 
+    const conclusion = issues.find(i => i.type === Type.CONCLUSION);
+
+    if (conclusion) {
+      result.push(conclusion.body);
+    }
+
     return result.join(`\n\n`);
   }
 
@@ -171,6 +184,6 @@ export class Formatter {
     status: string,
     color: BadgeColor
   ) {
-    return `[![Badge](https://img.shields.io/badge/${subject}-${status}-${color}.svg)](https://shields.io/)`;
+    return `![Badge](https://img.shields.io/badge/${subject}-${status}-${color}.svg)`;
   }
 }
