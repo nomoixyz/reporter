@@ -32,7 +32,7 @@ export class CLI {
       .action(async (repo, labels, options) => {
         const metadata: Metadata = {
           title: "Unknown",
-          startDate: Date.now(),
+          startDate: Date.now() / 1000,
         };
 
         if (fs.existsSync(options.metadata)) {

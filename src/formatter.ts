@@ -1,3 +1,4 @@
+import { resolve } from "path";
 import { Impact, Likelihood, ParsedIssue, Severity, Type } from "./parser.js";
 
 type BadgeColor = "red" | "yellow" | "blue";
@@ -26,7 +27,12 @@ export class Formatter {
         );
       }
       result.push(
-        `The review started at *${new Date(metadata.startDate).toUTCString()}*`
+        `The review started on *${this.formatDate(
+          new Date(metadata.startDate * 1000)
+        )}*.`
+      );
+      result.push(
+        `This report was updated on *${this.formatDate(new Date())}*.`
       );
     }
 
@@ -135,6 +141,15 @@ export class Formatter {
     }
 
     return result.join(`\n\n`);
+  }
+
+  private formatDate(date: Date): string {
+    return date.toLocaleString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
   }
 
   private issueBadges(issue: ParsedIssue): string {
