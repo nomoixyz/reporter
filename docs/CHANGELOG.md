@@ -1,3 +1,39 @@
+# [1.1.0](https://github.com/nomoixyz/reporter/compare/v1.0.0...v1.1.0) (2022-12-29)
+
+
+### Bug Fixes
+
+* simplify badges ([4b2db05](https://github.com/nomoixyz/reporter/commit/4b2db058344a528f0cf78dcfc13e6919d2e410cb))
+
+
+### Features
+
+* introduction and conclusion ([3144bd7](https://github.com/nomoixyz/reporter/commit/3144bd7f91e3fb874c1e859cb8e48f45c1cfb26d))
+
+# [1.1.0-beta.1](https://github.com/nomoixyz/reporter/compare/v1.0.0...v1.1.0-beta.1) (2022-12-29)
+
+
+### Bug Fixes
+
+* simplify badges ([4b2db05](https://github.com/nomoixyz/reporter/commit/4b2db058344a528f0cf78dcfc13e6919d2e410cb))
+
+
+### Features
+
+* introduction and conclusion ([3144bd7](https://github.com/nomoixyz/reporter/commit/3144bd7f91e3fb874c1e859cb8e48f45c1cfb26d))
+
+# [1.0.0-beta.5](https://github.com/nomoixyz/reporter/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2022-12-29)
+
+
+### Bug Fixes
+
+* simplify badges ([4b2db05](https://github.com/nomoixyz/reporter/commit/4b2db058344a528f0cf78dcfc13e6919d2e410cb))
+
+
+### Features
+
+* introduction and conclusion ([3144bd7](https://github.com/nomoixyz/reporter/commit/3144bd7f91e3fb874c1e859cb8e48f45c1cfb26d))
+
 # 1.0.0 (2022-12-29)
 
 
