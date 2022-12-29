@@ -171,6 +171,6 @@ export class Formatter {
     status: string,
     color: BadgeColor
   ) {
-    return `[![Badge](https://img.shields.io/badge/${subject}-${status}-${color}.svg)](https://shields.io/)`;
+    return `![Badge](https://img.shields.io/badge/${subject}-${status}-${color}.svg)`;
   }
 }
