@@ -6,16 +6,22 @@ on:
       - "next"
       - "beta"
 jobs:
-  build:
+  release:
+    name: Release new build
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install node
+      uses: actions/setup-node@v3
       with:
         node-version: 18
-    - run: npm ci
-    - run: npm run build
-    - run: npx semantic-release
+    - name: Install dependencies
+      run: npm ci
+    - name: Build project
+      run: npm run build
+    - name: Release
+      run: npx semantic-release
