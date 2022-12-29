@@ -1,4 +1,3 @@
-import { resolve } from "path";
 import { Impact, Likelihood, ParsedIssue, Severity, Type } from "./parser.js";
 
 type BadgeColor = "red" | "yellow" | "blue";
