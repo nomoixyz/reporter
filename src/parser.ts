@@ -43,11 +43,16 @@ export enum Type {
   FINDING,
   ENHANCEMENT,
   OPTIMIZATION,
+  INTRODUCTION,
+  CONCLUSION,
 }
 
 export const FindingTypeLabel = "finding";
 export const EnhancementTypeLabel = "enhancement";
 export const OptimizationTypeLabel = "optimization";
+
+export const IntroductionLabel = "introduction";
+export const ConclusionLabel = "conclusion";
 
 type SeverityMap = ReadonlyMap<
   ImpactLabel,
@@ -156,7 +161,9 @@ export class IssueParser {
       l =>
         l === FindingTypeLabel ||
         l === EnhancementTypeLabel ||
-        l === OptimizationTypeLabel
+        l === OptimizationTypeLabel ||
+        l === IntroductionLabel ||
+        l === ConclusionLabel
     );
 
     switch (typeLabel) {
@@ -166,6 +173,10 @@ export class IssueParser {
         return Type.ENHANCEMENT;
       case OptimizationTypeLabel:
         return Type.OPTIMIZATION;
+      case IntroductionLabel:
+        return Type.INTRODUCTION;
+      case ConclusionLabel:
+        return Type.CONCLUSION;
       default:
         return Type.UNKNOWN;
     }
