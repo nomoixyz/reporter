@@ -1,3 +1,10 @@
+# [1.2.0-beta.1](https://github.com/nomoixyz/reporter/compare/v1.1.0...v1.2.0-beta.1) (2022-12-29)
+
+
+### Features
+
+* report dates ([#11](https://github.com/nomoixyz/reporter/issues/11)) ([2fcd1bd](https://github.com/nomoixyz/reporter/commit/2fcd1bd0303d80411405a9e9663961ecf186f797))
+
 # [1.1.0](https://github.com/nomoixyz/reporter/compare/v1.0.0...v1.1.0) (2022-12-29)
 
 
