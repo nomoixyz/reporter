@@ -1,3 +1,10 @@
+# [1.3.0-beta.2](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.1...v1.3.0-beta.2) (2023-01-11)
+
+
+### Bug Fixes
+
+* update label colors ([f3f86dc](https://github.com/nomoixyz/reporter/commit/f3f86dc29814942fa9ad051b15e9fabf17db3c2d))
+
 # [1.3.0-beta.1](https://github.com/nomoixyz/reporter/compare/v1.2.0...v1.3.0-beta.1) (2023-01-11)
 
 
