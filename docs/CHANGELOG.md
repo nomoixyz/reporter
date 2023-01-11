@@ -1,3 +1,10 @@
+# [1.3.0-beta.1](https://github.com/nomoixyz/reporter/compare/v1.2.0...v1.3.0-beta.1) (2023-01-11)
+
+
+### Features
+
+* remove severity titles ([8f69f7d](https://github.com/nomoixyz/reporter/commit/8f69f7d93e6e2a9294b5eaa8368768a8aa4af6ca))
+
 # [1.2.0](https://github.com/nomoixyz/reporter/compare/v1.1.0...v1.2.0) (2022-12-29)
 
 
