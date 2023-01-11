@@ -75,40 +75,36 @@ export class Formatter {
       result.push(`<h2 align="center">Findings</h2>`);
     }
 
+    let counter = 1;
+
     for (const issue of criticalFindings) {
-      result.push(`### ${issue.title}`);
-      result.push(this.issueBadges(issue));
-      result.push(issue.body.replace(/\r/gm, ""));
+      result.push(this.formatIssue(counter, issue));
+      counter++;
     }
 
     for (const issue of highFindings) {
-      result.push(`### ${issue.title}`);
-      result.push(this.issueBadges(issue));
-      result.push(issue.body.replace(/\r/gm, ""));
+      result.push(this.formatIssue(counter, issue));
+      counter++;
     }
 
     for (const issue of mediumFindings) {
-      result.push(`### ${issue.title}`);
-      result.push(this.issueBadges(issue));
-      result.push(issue.body.replace(/\r/gm, ""));
+      result.push(this.formatIssue(counter, issue));
+      counter++;
     }
 
     for (const issue of lowFindings) {
-      result.push(`### ${issue.title}`);
-      result.push(this.issueBadges(issue));
-      result.push(issue.body.replace(/\r/gm, ""));
+      result.push(this.formatIssue(counter, issue));
+      counter++;
     }
 
     for (const issue of enhancements) {
-      result.push(`### ${issue.title}`);
-      result.push(this.issueBadges(issue));
-      result.push(issue.body.replace(/\r/gm, ""));
+      result.push(this.formatIssue(counter, issue));
+      counter++;
     }
 
     for (const issue of optimizations) {
-      result.push(`### ${issue.title}`);
-      result.push(this.issueBadges(issue));
-      result.push(issue.body.replace(/\r/gm, ""));
+      result.push(this.formatIssue(counter, issue));
+      counter++;
     }
 
     const conclusion = issues.find(i => i.type === Type.CONCLUSION);
@@ -118,6 +114,14 @@ export class Formatter {
     }
 
     return result.join(`\n\n`);
+  }
+
+  private formatIssue(index: number, issue: ParsedIssue): string {
+    return [
+      `### ${index}. ${issue.title}`,
+      this.issueBadges(issue),
+      issue.body.replace(/\r/gm, ""),
+    ].join(`\n\n`);
   }
 
   private formatDate(date: Date): string {
