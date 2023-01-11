@@ -66,6 +66,10 @@ export class Formatter {
       }
     }
 
+    highFindings.sort(this.sortIssues);
+    mediumFindings.sort(this.sortIssues);
+    lowFindings.sort(this.sortIssues);
+
     if (
       criticalFindings.length > 0 ||
       highFindings.length > 0 ||
@@ -114,6 +118,42 @@ export class Formatter {
     }
 
     return result.join(`\n\n`);
+  }
+
+  private sortIssues(issueA: ParsedIssue, issueB: ParsedIssue): number {
+    if (!issueA.impact) {
+      return -1;
+    }
+
+    if (!issueB.impact) {
+      return 1;
+    }
+
+    if (issueA.impact > issueB.impact) {
+      return 1;
+    }
+
+    if (issueB.impact > issueA.impact) {
+      return -1;
+    }
+
+    if (!issueA.likelihood) {
+      return -1;
+    }
+
+    if (!issueB.likelihood) {
+      return 1;
+    }
+
+    if (issueA.likelihood > issueB.likelihood) {
+      return 1;
+    }
+
+    if (issueB.likelihood > issueA.likelihood) {
+      return -1;
+    }
+
+    return 0;
   }
 
   private formatIssue(index: number, issue: ParsedIssue): string {
