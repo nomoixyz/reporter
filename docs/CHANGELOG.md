@@ -1,3 +1,10 @@
+# [1.3.0-beta.4](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.3...v1.3.0-beta.4) (2023-01-11)
+
+
+### Features
+
+* sort issues ([92e5f43](https://github.com/nomoixyz/reporter/commit/92e5f43b18cf458c0564607d9b8e17f9d20ff1ee))
+
 # [1.3.0-beta.3](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.2...v1.3.0-beta.3) (2023-01-11)
 
 
