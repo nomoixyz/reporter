@@ -1,6 +1,6 @@
 import { Impact, Likelihood, ParsedIssue, Severity, Type } from "./parser.js";
 
-type BadgeColor = "red" | "yellow" | "blue" | "green" | "cyan";
+type BadgeColor = "red" | "yellow" | "blue" | "green" | "orange";
 
 export interface Metadata {
   title: string;
@@ -131,7 +131,7 @@ export class Formatter {
 
   private issueBadges(issue: ParsedIssue): string {
     if (issue.type === Type.FINDING) {
-      let impactColor: BadgeColor = "blue";
+      let impactColor: BadgeColor = "yellow";
       let impactText = Impact[Impact.LOW];
 
       if (issue.impact === Impact.HIGH) {
@@ -140,11 +140,11 @@ export class Formatter {
       }
 
       if (issue.impact === Impact.MEDIUM) {
-        impactColor = "yellow";
+        impactColor = "orange";
         impactText = Impact[Impact.MEDIUM];
       }
 
-      let likelihoodColor: BadgeColor = "blue";
+      let likelihoodColor: BadgeColor = "yellow";
       let likelihoodText = Likelihood[Likelihood.LOW];
 
       if (issue.likelihood === Likelihood.HIGH) {
@@ -153,7 +153,7 @@ export class Formatter {
       }
 
       if (issue.likelihood === Likelihood.MEDIUM) {
-        likelihoodColor = "yellow";
+        likelihoodColor = "orange";
         likelihoodText = Likelihood[Likelihood.MEDIUM];
       }
 
@@ -173,7 +173,7 @@ export class Formatter {
     }
 
     if (issue.type === Type.ENHANCEMENT) {
-      return `${this.markdownBadgeGenerator("", "ENHANCEMENT", "cyan")}`;
+      return `${this.markdownBadgeGenerator("", "ENHANCEMENT", "blue")}`;
     }
 
     if (issue.type === Type.OPTIMIZATION) {
