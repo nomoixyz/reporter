@@ -1,3 +1,10 @@
+# [1.3.0-beta.3](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.2...v1.3.0-beta.3) (2023-01-11)
+
+
+### Features
+
+* add number to issue title ([ee3be9c](https://github.com/nomoixyz/reporter/commit/ee3be9ce88f89df04cef51f3ec963120cd59ff3c))
+
 # [1.3.0-beta.2](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.1...v1.3.0-beta.2) (2023-01-11)
 
 
