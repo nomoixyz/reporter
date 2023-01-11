@@ -121,36 +121,36 @@ export class Formatter {
   }
 
   private sortIssues(issueA: ParsedIssue, issueB: ParsedIssue): number {
-    if (!issueA.impact) {
+    if (issueA.impact == undefined) {
       return -1;
     }
 
-    if (!issueB.impact) {
+    if (issueB.impact == undefined) {
       return 1;
     }
 
     if (issueA.impact > issueB.impact) {
-      return 1;
+      return -1;
     }
 
     if (issueB.impact > issueA.impact) {
+      return 1;
+    }
+
+    if (issueA.likelihood == undefined) {
       return -1;
     }
 
-    if (!issueA.likelihood) {
-      return -1;
-    }
-
-    if (!issueB.likelihood) {
+    if (issueB.likelihood == undefined) {
       return 1;
     }
 
     if (issueA.likelihood > issueB.likelihood) {
-      return 1;
+      return -1;
     }
 
     if (issueB.likelihood > issueA.likelihood) {
-      return -1;
+      return 1;
     }
 
     return 0;
