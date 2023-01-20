@@ -54,6 +54,10 @@ export class CLI {
               commit: rawMetadata.commit,
             };
           }
+
+          if (rawMetadata.logo) {
+            metadata.logo = rawMetadata.logo;
+          }
         }
 
         const rawIssues = await this.github.getRepoIssues(repo, labels);

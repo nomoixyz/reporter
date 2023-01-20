@@ -9,6 +9,7 @@ export interface Metadata {
     commit: string;
   };
   startDate: number;
+  logo?: string;
 }
 
 export class Formatter {
@@ -16,6 +17,11 @@ export class Formatter {
     const result: string[] = [];
 
     if (metadata) {
+      if (metadata.logo) {
+        result.push(
+          `<img align="center" width="400px" src="${metadata.logo}"></img>`
+        );
+      }
       result.push(`<h1 align="center">${metadata.title}</h1>`);
 
       if (metadata.repository) {
