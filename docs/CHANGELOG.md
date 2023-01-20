@@ -1,3 +1,10 @@
+# [1.3.0-beta.7](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.6...v1.3.0-beta.7) (2023-01-20)
+
+
+### Bug Fixes
+
+* use p to center ([8fd828f](https://github.com/nomoixyz/reporter/commit/8fd828fa312de760042113a1527afd187962b0a3))
+
 # [1.3.0-beta.6](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.5...v1.3.0-beta.6) (2023-01-20)
 
 
