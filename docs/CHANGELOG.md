@@ -1,3 +1,10 @@
+# [1.3.0-beta.6](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.5...v1.3.0-beta.6) (2023-01-20)
+
+
+### Features
+
+* add logo ([78bbfb2](https://github.com/nomoixyz/reporter/commit/78bbfb2da934e801544fa6adc5d6b21a39dbabd3))
+
 # [1.3.0-beta.5](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.4...v1.3.0-beta.5) (2023-01-11)
 
 
