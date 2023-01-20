@@ -18,9 +18,7 @@ export class Formatter {
 
     if (metadata) {
       if (metadata.logo) {
-        result.push(
-          `<img align="center" width="400px" src="${metadata.logo}"></img>`
-        );
+        result.push(`<p align="center"><img src="${metadata.logo}"></img></p>`);
       }
       result.push(`<h1 align="center">${metadata.title}</h1>`);
 
