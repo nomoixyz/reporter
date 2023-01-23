@@ -10,6 +10,8 @@ export interface Metadata {
   };
   startDate: number;
   logo?: string;
+  header?: string;
+  footer?: string;
 }
 
 export class Formatter {
@@ -17,6 +19,10 @@ export class Formatter {
     const result: string[] = [];
 
     if (metadata) {
+      if (metadata.header) {
+        result.push(metadata.header);
+      }
+
       if (metadata.logo) {
         result.push(`<p align="center"><img src="${metadata.logo}"></img></p>`);
       }
@@ -26,7 +32,7 @@ export class Formatter {
         const repositoryUrl = metadata.repository.url;
         const commitUrl = `${repositoryUrl}/commit/${metadata.repository.commit}`;
         result.push(
-          `This report was made by reviewing the [${repositoryUrl}](${repositoryUrl}) repository on commit [${metadata.repository.commit}](${commitUrl}).`
+          `We reviewed the [${repositoryUrl}](${repositoryUrl}) repository at commit [${metadata.repository.commit}](${commitUrl}).`
         );
       }
       result.push(
@@ -119,6 +125,10 @@ export class Formatter {
 
     if (conclusion) {
       result.push(conclusion.body);
+    }
+
+    if (metadata?.footer) {
+      result.push(metadata.footer);
     }
 
     return result.join(`\n\n`);

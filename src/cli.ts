@@ -40,6 +40,14 @@ export class CLI {
             fs.readFileSync(options.metadata).toString()
           );
 
+          if (rawMetadata.header) {
+            metadata.header = rawMetadata.header;
+          }
+
+          if (rawMetadata.footer) {
+            metadata.footer = rawMetadata.footer;
+          }
+
           if (rawMetadata.title) {
             metadata.title = rawMetadata.title;
           }
