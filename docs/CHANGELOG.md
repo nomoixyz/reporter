@@ -1,3 +1,10 @@
+# [1.3.0-beta.8](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.7...v1.3.0-beta.8) (2023-01-23)
+
+
+### Features
+
+* themed logos ([e1acef5](https://github.com/nomoixyz/reporter/commit/e1acef57960121db1aa03b993a20fd5bcd2c10ed))
+
 # [1.3.0-beta.7](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.6...v1.3.0-beta.7) (2023-01-20)
 
 
