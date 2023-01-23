@@ -38,7 +38,7 @@ export class Formatter {
 
       if (metadata.logoLight) {
         result.push(
-          `<source media="(prefers-color-scheme: dark)" srcset="${metadata.logoLight}">`
+          `<source media="(prefers-color-scheme: light)" srcset="${metadata.logoLight}">`
         );
       }
 
