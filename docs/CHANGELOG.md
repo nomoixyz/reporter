@@ -1,3 +1,10 @@
+# [1.3.0-beta.9](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.8...v1.3.0-beta.9) (2023-01-23)
+
+
+### Bug Fixes
+
+* fix wrong theme ([40bbea6](https://github.com/nomoixyz/reporter/commit/40bbea6041275d4a210278a91bc5e8a653790fb3))
+
 # [1.3.0-beta.8](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.7...v1.3.0-beta.8) (2023-01-23)
 
 
