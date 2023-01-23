@@ -74,6 +74,10 @@ export class CLI {
           if (rawMetadata.logoLight) {
             metadata.logoLight = rawMetadata.logoLight;
           }
+
+          if (rawMetadata.logoUrl) {
+            metadata.logoUrl = rawMetadata.logoUrl;
+          }
         }
 
         const rawIssues = await this.github.getRepoIssues(repo, labels);

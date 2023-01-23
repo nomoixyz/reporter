@@ -9,6 +9,7 @@ export interface Metadata {
     commit: string;
   };
   startDate: number;
+  logoUrl?: string;
   logo?: string;
   logoDark?: string;
   logoLight?: string;
@@ -28,6 +29,11 @@ export class Formatter {
       result.push(`<h1 align="center">${metadata.title}</h1>`);
 
       result.push('<p align="center">');
+
+      if (metadata.logoUrl) {
+        result.push(`<a href="${metadata.logoUrl}">`);
+      }
+
       result.push("<picture>");
 
       if (metadata.logoDark) {
@@ -47,6 +53,9 @@ export class Formatter {
       }
 
       result.push("</picture>");
+      if (metadata.logoUrl) {
+        result.push(`</a>`);
+      }
       result.push("</p>");
 
       if (metadata.repository) {
