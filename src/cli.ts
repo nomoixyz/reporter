@@ -66,6 +66,14 @@ export class CLI {
           if (rawMetadata.logo) {
             metadata.logo = rawMetadata.logo;
           }
+
+          if (rawMetadata.logoDark) {
+            metadata.logoDark = rawMetadata.logoDark;
+          }
+
+          if (rawMetadata.logoLight) {
+            metadata.logoLight = rawMetadata.logoLight;
+          }
         }
 
         const rawIssues = await this.github.getRepoIssues(repo, labels);

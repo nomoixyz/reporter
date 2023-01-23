@@ -10,6 +10,8 @@ export interface Metadata {
   };
   startDate: number;
   logo?: string;
+  logoDark?: string;
+  logoLight?: string;
   header?: string;
   footer?: string;
 }
@@ -23,9 +25,28 @@ export class Formatter {
         result.push(metadata.header);
       }
 
-      if (metadata.logo) {
-        result.push(`<p align="center"><img src="${metadata.logo}"></img></p>`);
+      result.push('<p align="center">');
+      result.push("<picture>");
+
+      if (metadata.logoDark) {
+        result.push(
+          `<source media="(prefers-color-scheme: dark)" srcset="${metadata.logoDark}">`
+        );
       }
+
+      if (metadata.logoLight) {
+        result.push(
+          `<source media="(prefers-color-scheme: dark)" srcset="${metadata.logoLight}">`
+        );
+      }
+
+      if (metadata.logo) {
+        result.push(`<img src="${metadata.logo}">`);
+      }
+
+      result.push("</picture>");
+      result.push("</p>");
+
       result.push(`<h1 align="center">${metadata.title}</h1>`);
 
       if (metadata.repository) {
