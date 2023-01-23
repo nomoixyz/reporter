@@ -25,6 +25,8 @@ export class Formatter {
         result.push(metadata.header);
       }
 
+      result.push(`<h1 align="center">${metadata.title}</h1>`);
+
       result.push('<p align="center">');
       result.push("<picture>");
 
@@ -46,8 +48,6 @@ export class Formatter {
 
       result.push("</picture>");
       result.push("</p>");
-
-      result.push(`<h1 align="center">${metadata.title}</h1>`);
 
       if (metadata.repository) {
         const repositoryUrl = metadata.repository.url;
