@@ -1,3 +1,10 @@
+# [1.3.0-beta.11](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.10...v1.3.0-beta.11) (2023-07-21)
+
+
+### Bug Fixes
+
+* use <br/> instead of new lines ([025fbdc](https://github.com/nomoixyz/reporter/commit/025fbdc57adeeeb3a3d89ad54c52cb8e42729b12))
+
 # [1.3.0-beta.10](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.9...v1.3.0-beta.10) (2023-01-23)
 
 
