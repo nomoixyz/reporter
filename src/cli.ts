@@ -40,6 +40,14 @@ export class CLI {
             fs.readFileSync(options.metadata).toString()
           );
 
+          if (rawMetadata.header) {
+            metadata.header = rawMetadata.header;
+          }
+
+          if (rawMetadata.footer) {
+            metadata.footer = rawMetadata.footer;
+          }
+
           if (rawMetadata.title) {
             metadata.title = rawMetadata.title;
           }
@@ -53,6 +61,22 @@ export class CLI {
               url: rawMetadata.repository,
               commit: rawMetadata.commit,
             };
+          }
+
+          if (rawMetadata.logo) {
+            metadata.logo = rawMetadata.logo;
+          }
+
+          if (rawMetadata.logoDark) {
+            metadata.logoDark = rawMetadata.logoDark;
+          }
+
+          if (rawMetadata.logoLight) {
+            metadata.logoLight = rawMetadata.logoLight;
+          }
+
+          if (rawMetadata.logoUrl) {
+            metadata.logoUrl = rawMetadata.logoUrl;
           }
         }
 

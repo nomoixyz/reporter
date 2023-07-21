@@ -1,3 +1,73 @@
+# [1.3.0-beta.10](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.9...v1.3.0-beta.10) (2023-01-23)
+
+
+### Features
+
+* add url for logo ([73f0be3](https://github.com/nomoixyz/reporter/commit/73f0be3e7c1e103d160177a1b372efaef142d2e8))
+
+# [1.3.0-beta.9](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.8...v1.3.0-beta.9) (2023-01-23)
+
+
+### Bug Fixes
+
+* fix wrong theme ([40bbea6](https://github.com/nomoixyz/reporter/commit/40bbea6041275d4a210278a91bc5e8a653790fb3))
+
+# [1.3.0-beta.8](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.7...v1.3.0-beta.8) (2023-01-23)
+
+
+### Features
+
+* themed logos ([e1acef5](https://github.com/nomoixyz/reporter/commit/e1acef57960121db1aa03b993a20fd5bcd2c10ed))
+
+# [1.3.0-beta.7](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.6...v1.3.0-beta.7) (2023-01-20)
+
+
+### Bug Fixes
+
+* use p to center ([8fd828f](https://github.com/nomoixyz/reporter/commit/8fd828fa312de760042113a1527afd187962b0a3))
+
+# [1.3.0-beta.6](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.5...v1.3.0-beta.6) (2023-01-20)
+
+
+### Features
+
+* add logo ([78bbfb2](https://github.com/nomoixyz/reporter/commit/78bbfb2da934e801544fa6adc5d6b21a39dbabd3))
+
+# [1.3.0-beta.5](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.4...v1.3.0-beta.5) (2023-01-11)
+
+
+### Bug Fixes
+
+* fix issues sorting ([a6dfab7](https://github.com/nomoixyz/reporter/commit/a6dfab7f75a0e84bc5fd42988c9febf982427c23))
+
+# [1.3.0-beta.4](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.3...v1.3.0-beta.4) (2023-01-11)
+
+
+### Features
+
+* sort issues ([92e5f43](https://github.com/nomoixyz/reporter/commit/92e5f43b18cf458c0564607d9b8e17f9d20ff1ee))
+
+# [1.3.0-beta.3](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.2...v1.3.0-beta.3) (2023-01-11)
+
+
+### Features
+
+* add number to issue title ([ee3be9c](https://github.com/nomoixyz/reporter/commit/ee3be9ce88f89df04cef51f3ec963120cd59ff3c))
+
+# [1.3.0-beta.2](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.1...v1.3.0-beta.2) (2023-01-11)
+
+
+### Bug Fixes
+
+* update label colors ([f3f86dc](https://github.com/nomoixyz/reporter/commit/f3f86dc29814942fa9ad051b15e9fabf17db3c2d))
+
+# [1.3.0-beta.1](https://github.com/nomoixyz/reporter/compare/v1.2.0...v1.3.0-beta.1) (2023-01-11)
+
+
+### Features
+
+* remove severity titles ([8f69f7d](https://github.com/nomoixyz/reporter/commit/8f69f7d93e6e2a9294b5eaa8368768a8aa4af6ca))
+
 # [1.2.0](https://github.com/nomoixyz/reporter/compare/v1.1.0...v1.2.0) (2022-12-29)
 
 

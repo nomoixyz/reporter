@@ -1,6 +1,6 @@
 import { Impact, Likelihood, ParsedIssue, Severity, Type } from "./parser.js";
 
-type BadgeColor = "red" | "yellow" | "blue";
+type BadgeColor = "red" | "yellow" | "blue" | "green" | "orange";
 
 export interface Metadata {
   title: string;
@@ -9,6 +9,12 @@ export interface Metadata {
     commit: string;
   };
   startDate: number;
+  logoUrl?: string;
+  logo?: string;
+  logoDark?: string;
+  logoLight?: string;
+  header?: string;
+  footer?: string;
 }
 
 export class Formatter {
@@ -16,13 +22,47 @@ export class Formatter {
     const result: string[] = [];
 
     if (metadata) {
+      if (metadata.header) {
+        result.push(metadata.header);
+      }
+
       result.push(`<h1 align="center">${metadata.title}</h1>`);
+
+      result.push('<p align="center">');
+
+      if (metadata.logoUrl) {
+        result.push(`<a href="${metadata.logoUrl}">`);
+      }
+
+      result.push("<picture>");
+
+      if (metadata.logoDark) {
+        result.push(
+          `<source media="(prefers-color-scheme: dark)" srcset="${metadata.logoDark}">`
+        );
+      }
+
+      if (metadata.logoLight) {
+        result.push(
+          `<source media="(prefers-color-scheme: light)" srcset="${metadata.logoLight}">`
+        );
+      }
+
+      if (metadata.logo) {
+        result.push(`<img src="${metadata.logo}">`);
+      }
+
+      result.push("</picture>");
+      if (metadata.logoUrl) {
+        result.push(`</a>`);
+      }
+      result.push("</p>");
 
       if (metadata.repository) {
         const repositoryUrl = metadata.repository.url;
         const commitUrl = `${repositoryUrl}/commit/${metadata.repository.commit}`;
         result.push(
-          `This report was made by reviewing the [${repositoryUrl}](${repositoryUrl}) repository on commit [${metadata.repository.commit}](${commitUrl}).`
+          `We reviewed the [${repositoryUrl}](${repositoryUrl}) repository at commit [${metadata.repository.commit}](${commitUrl}).`
         );
       }
       result.push(
@@ -40,7 +80,7 @@ export class Formatter {
 
     if (introduction) {
       result.push(introduction.body);
-      result.push("<br/>");
+      result.push("<br/><br/>");
     }
 
     const criticalFindings: ParsedIssue[] = [];
@@ -68,6 +108,10 @@ export class Formatter {
       }
     }
 
+    highFindings.sort(this.sortIssues);
+    mediumFindings.sort(this.sortIssues);
+    lowFindings.sort(this.sortIssues);
+
     if (
       criticalFindings.length > 0 ||
       highFindings.length > 0 ||
@@ -78,69 +122,36 @@ export class Formatter {
       result.push("<br/>");
     }
 
-    if (criticalFindings.length > 0) {
-      result.push(`### Critical severity`);
-    }
+    let counter = 1;
 
     for (const issue of criticalFindings) {
-      result.push(`#### ${issue.title}`);
-      result.push(this.issueBadges(issue));
-      result.push(issue.body.replace(/\r/gm, ""));
-      result.push("<br/><br/>");
-    }
-
-    if (highFindings.length > 0) {
-      result.push(`### High severity`);
+      result.push(this.formatIssue(counter, issue));
+      counter++;
     }
 
     for (const issue of highFindings) {
-      result.push(`#### ${issue.title}`);
-      result.push(this.issueBadges(issue));
-      result.push(issue.body.replace(/\r/gm, ""));
-      result.push("<br/><br/>");
-    }
-
-    if (mediumFindings.length > 0) {
-      result.push(`### Medium severity`);
+      result.push(this.formatIssue(counter, issue));
+      counter++;
     }
 
     for (const issue of mediumFindings) {
-      result.push(`#### ${issue.title}`);
-      result.push(this.issueBadges(issue));
-      result.push(issue.body.replace(/\r/gm, ""));
-      result.push("<br/><br/>");
-    }
-
-    if (lowFindings.length > 0) {
-      result.push(`### Low severity`);
+      result.push(this.formatIssue(counter, issue));
+      counter++;
     }
 
     for (const issue of lowFindings) {
-      result.push(`#### ${issue.title}`);
-      result.push(this.issueBadges(issue));
-      result.push(issue.body.replace(/\r/gm, ""));
-      result.push("<br/><br/>");
-    }
-
-    if (enhancements.length > 0) {
-      result.push(`<h2 align="center">Code enhancements</h2>`);
-      result.push("<br/>");
+      result.push(this.formatIssue(counter, issue));
+      counter++;
     }
 
     for (const issue of enhancements) {
-      result.push(`#### ${issue.title}`);
-      result.push(issue.body.replace(/\r/gm, ""));
-      result.push("<br/><br/>");
-    }
-
-    if (optimizations.length > 0) {
-      result.push(`<h2 align="center">Gas optimizations</h2>`);
+      result.push(this.formatIssue(counter, issue));
+      counter++;
     }
 
     for (const issue of optimizations) {
-      result.push(`#### ${issue.title}`);
-      result.push(issue.body.replace(/\r/gm, ""));
-      result.push("<br/><br/>");
+      result.push(this.formatIssue(counter, issue));
+      counter++;
     }
 
     const conclusion = issues.find(i => i.type === Type.CONCLUSION);
@@ -149,7 +160,56 @@ export class Formatter {
       result.push(conclusion.body);
     }
 
+    if (metadata?.footer) {
+      result.push(metadata.footer);
+    }
+
     return result.join(`\n\n`);
+  }
+
+  private sortIssues(issueA: ParsedIssue, issueB: ParsedIssue): number {
+    if (issueA.impact == undefined) {
+      return -1;
+    }
+
+    if (issueB.impact == undefined) {
+      return 1;
+    }
+
+    if (issueA.impact > issueB.impact) {
+      return -1;
+    }
+
+    if (issueB.impact > issueA.impact) {
+      return 1;
+    }
+
+    if (issueA.likelihood == undefined) {
+      return -1;
+    }
+
+    if (issueB.likelihood == undefined) {
+      return 1;
+    }
+
+    if (issueA.likelihood > issueB.likelihood) {
+      return -1;
+    }
+
+    if (issueB.likelihood > issueA.likelihood) {
+      return 1;
+    }
+
+    return 0;
+  }
+
+  private formatIssue(index: number, issue: ParsedIssue): string {
+    return [
+      `### ${index}. ${issue.title}`,
+      this.issueBadges(issue),
+      issue.body.replace(/\r/gm, ""),
+      "<br/><br/>"
+    ].join(`\n\n`);
   }
 
   private formatDate(date: Date): string {
@@ -162,45 +222,57 @@ export class Formatter {
   }
 
   private issueBadges(issue: ParsedIssue): string {
-    let impactColor: BadgeColor = "blue";
-    let impactText = Impact[Impact.LOW];
+    if (issue.type === Type.FINDING) {
+      let impactColor: BadgeColor = "yellow";
+      let impactText = Impact[Impact.LOW];
 
-    if (issue.impact === Impact.HIGH) {
-      impactColor = "red";
-      impactText = Impact[Impact.HIGH];
+      if (issue.impact === Impact.HIGH) {
+        impactColor = "red";
+        impactText = Impact[Impact.HIGH];
+      }
+
+      if (issue.impact === Impact.MEDIUM) {
+        impactColor = "orange";
+        impactText = Impact[Impact.MEDIUM];
+      }
+
+      let likelihoodColor: BadgeColor = "yellow";
+      let likelihoodText = Likelihood[Likelihood.LOW];
+
+      if (issue.likelihood === Likelihood.HIGH) {
+        likelihoodColor = "red";
+        likelihoodText = Likelihood[Likelihood.HIGH];
+      }
+
+      if (issue.likelihood === Likelihood.MEDIUM) {
+        likelihoodColor = "orange";
+        likelihoodText = Likelihood[Likelihood.MEDIUM];
+      }
+
+      const impactBadge = this.markdownBadgeGenerator(
+        "IMPACT",
+        impactText,
+        impactColor
+      );
+
+      const likelihoodBadge = this.markdownBadgeGenerator(
+        "LIKELIHOOD",
+        likelihoodText,
+        likelihoodColor
+      );
+
+      return `${impactBadge} ${likelihoodBadge}`;
     }
 
-    if (issue.impact === Impact.MEDIUM) {
-      impactColor = "yellow";
-      impactText = Impact[Impact.MEDIUM];
+    if (issue.type === Type.ENHANCEMENT) {
+      return `${this.markdownBadgeGenerator("", "ENHANCEMENT", "blue")}`;
     }
 
-    let likelihoodColor: BadgeColor = "blue";
-    let likelihoodText = Likelihood[Likelihood.LOW];
-
-    if (issue.likelihood === Likelihood.HIGH) {
-      likelihoodColor = "red";
-      likelihoodText = Likelihood[Likelihood.HIGH];
+    if (issue.type === Type.OPTIMIZATION) {
+      return `${this.markdownBadgeGenerator("", "OPTIMIZATION", "green")}`;
     }
 
-    if (issue.likelihood === Likelihood.MEDIUM) {
-      likelihoodColor = "yellow";
-      likelihoodText = Likelihood[Likelihood.MEDIUM];
-    }
-
-    const impactBadge = this.markdownBadgeGenerator(
-      "IMPACT",
-      impactText,
-      impactColor
-    );
-
-    const likelihoodBadge = this.markdownBadgeGenerator(
-      "LIKELIHOOD",
-      likelihoodText,
-      likelihoodColor
-    );
-
-    return `${impactBadge} ${likelihoodBadge}`;
+    return "";
   }
 
   private markdownBadgeGenerator(
