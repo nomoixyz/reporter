@@ -73,12 +73,14 @@ export class Formatter {
       result.push(
         `This report was updated on *${this.formatDate(new Date())}*.`
       );
+      result.push("<br/>");
     }
 
     const introduction = issues.find(i => i.type === Type.INTRODUCTION);
 
     if (introduction) {
       result.push(introduction.body);
+      result.push("<br/><br/>");
     }
 
     const criticalFindings: ParsedIssue[] = [];
@@ -117,6 +119,7 @@ export class Formatter {
       lowFindings.length > 0
     ) {
       result.push(`<h2 align="center">Findings</h2>`);
+      result.push("<br/>");
     }
 
     let counter = 1;
@@ -205,6 +208,7 @@ export class Formatter {
       `### ${index}. ${issue.title}`,
       this.issueBadges(issue),
       issue.body.replace(/\r/gm, ""),
+      "<br/><br/>"
     ].join(`\n\n`);
   }
 
