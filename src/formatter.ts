@@ -33,12 +33,14 @@ export class Formatter {
       result.push(
         `This report was updated on *${this.formatDate(new Date())}*.`
       );
+      result.push("<br/>");
     }
 
     const introduction = issues.find(i => i.type === Type.INTRODUCTION);
 
     if (introduction) {
       result.push(introduction.body);
+      result.push("<br/>");
     }
 
     const criticalFindings: ParsedIssue[] = [];
@@ -73,6 +75,7 @@ export class Formatter {
       lowFindings.length > 0
     ) {
       result.push(`<h2 align="center">Findings</h2>`);
+      result.push("<br/>");
     }
 
     if (criticalFindings.length > 0) {
@@ -83,6 +86,7 @@ export class Formatter {
       result.push(`#### ${issue.title}`);
       result.push(this.issueBadges(issue));
       result.push(issue.body.replace(/\r/gm, ""));
+      result.push("<br/><br/>");
     }
 
     if (highFindings.length > 0) {
@@ -93,6 +97,7 @@ export class Formatter {
       result.push(`#### ${issue.title}`);
       result.push(this.issueBadges(issue));
       result.push(issue.body.replace(/\r/gm, ""));
+      result.push("<br/><br/>");
     }
 
     if (mediumFindings.length > 0) {
@@ -103,6 +108,7 @@ export class Formatter {
       result.push(`#### ${issue.title}`);
       result.push(this.issueBadges(issue));
       result.push(issue.body.replace(/\r/gm, ""));
+      result.push("<br/><br/>");
     }
 
     if (lowFindings.length > 0) {
@@ -113,15 +119,18 @@ export class Formatter {
       result.push(`#### ${issue.title}`);
       result.push(this.issueBadges(issue));
       result.push(issue.body.replace(/\r/gm, ""));
+      result.push("<br/><br/>");
     }
 
     if (enhancements.length > 0) {
       result.push(`<h2 align="center">Code enhancements</h2>`);
+      result.push("<br/>");
     }
 
     for (const issue of enhancements) {
       result.push(`#### ${issue.title}`);
       result.push(issue.body.replace(/\r/gm, ""));
+      result.push("<br/><br/>");
     }
 
     if (optimizations.length > 0) {
@@ -131,6 +140,7 @@ export class Formatter {
     for (const issue of optimizations) {
       result.push(`#### ${issue.title}`);
       result.push(issue.body.replace(/\r/gm, ""));
+      result.push("<br/><br/>");
     }
 
     const conclusion = issues.find(i => i.type === Type.CONCLUSION);
