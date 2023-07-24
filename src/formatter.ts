@@ -261,7 +261,7 @@ export class Formatter {
         likelihoodColor
       );
 
-      return `${impactBadge} ${likelihoodBadge}`;
+      return `${likelihoodBadge} ${impactBadge}`;
     }
 
     if (issue.type === Type.ENHANCEMENT) {
