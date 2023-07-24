@@ -1,3 +1,10 @@
+# [1.3.0-beta.12](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.11...v1.3.0-beta.12) (2023-07-24)
+
+
+### Bug Fixes
+
+* badge order ([e8b3cb7](https://github.com/nomoixyz/reporter/commit/e8b3cb7fd92befbffab68addb19402736580257e))
+
 # [1.3.0-beta.11](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.10...v1.3.0-beta.11) (2023-07-21)
 
 
