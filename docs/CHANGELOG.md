@@ -1,3 +1,10 @@
+# [1.3.0-beta.13](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.12...v1.3.0-beta.13) (2023-08-10)
+
+
+### Bug Fixes
+
+* sort by severity and title ([dcf11ea](https://github.com/nomoixyz/reporter/commit/dcf11ea07fdcb09909aa00bb8b6888d890773c28))
+
 # [1.3.0-beta.12](https://github.com/nomoixyz/reporter/compare/v1.3.0-beta.11...v1.3.0-beta.12) (2023-07-24)
 
 
