@@ -108,9 +108,18 @@ export class Formatter {
       }
     }
 
-    highFindings.sort(this.sortIssues);
-    mediumFindings.sort(this.sortIssues);
-    lowFindings.sort(this.sortIssues);
+    // By severity and title
+    highFindings.sort(this.sortIssuesBySeverity);
+    mediumFindings.sort(this.sortIssuesBySeverity);
+    lowFindings.sort(this.sortIssuesBySeverity);
+
+    // By title
+    enhancements.sort((issueA, issueB) =>
+      issueA.title.localeCompare(issueB.title)
+    );
+    optimizations.sort((issueA, issueB) =>
+      issueA.title.localeCompare(issueB.title)
+    );
 
     if (
       criticalFindings.length > 0 ||
@@ -167,40 +176,19 @@ export class Formatter {
     return result.join(`\n\n`);
   }
 
-  private sortIssues(issueA: ParsedIssue, issueB: ParsedIssue): number {
-    if (issueA.impact == undefined) {
-      return -1;
+  private sortIssuesBySeverity(
+    issueA: ParsedIssue,
+    issueB: ParsedIssue
+  ): number {
+    function compare(a: number | undefined, b: number | undefined): number {
+      return (b || 0) - (a || 0);
     }
 
-    if (issueB.impact == undefined) {
-      return 1;
-    }
-
-    if (issueA.impact > issueB.impact) {
-      return -1;
-    }
-
-    if (issueB.impact > issueA.impact) {
-      return 1;
-    }
-
-    if (issueA.likelihood == undefined) {
-      return -1;
-    }
-
-    if (issueB.likelihood == undefined) {
-      return 1;
-    }
-
-    if (issueA.likelihood > issueB.likelihood) {
-      return -1;
-    }
-
-    if (issueB.likelihood > issueA.likelihood) {
-      return 1;
-    }
-
-    return 0;
+    return (
+      compare(issueA.impact, issueB.impact) ||
+      compare(issueA.likelihood, issueB.likelihood) ||
+      issueA.title.localeCompare(issueB.title)
+    );
   }
 
   private formatIssue(index: number, issue: ParsedIssue): string {
@@ -208,7 +196,7 @@ export class Formatter {
       `### ${index}. ${issue.title}`,
       this.issueBadges(issue),
       issue.body.replace(/\r/gm, ""),
-      "<br/><br/>"
+      "<br/><br/>",
     ].join(`\n\n`);
   }
 
